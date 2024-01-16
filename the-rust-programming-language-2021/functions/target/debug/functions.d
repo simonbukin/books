@@ -1,0 +1,1 @@
+/Users/simonbukin/Projects/programming/books/the-rust-programming-language-2021/functions/target/debug/functions: /Users/simonbukin/Projects/programming/books/the-rust-programming-language-2021/functions/src/main.rs
