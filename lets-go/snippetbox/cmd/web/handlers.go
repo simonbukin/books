@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"strconv"
 )
@@ -21,8 +20,9 @@ func snippetView(w http.ResponseWriter, r *http.Request) {
 	if err != nil || id < 1 {
 		http.NotFound(w, r)
 		return
-	}
-	fmt.Fprintf(w, "Display a specific snippet with ID %d...", id)
+	}	
+
+	fmt.Fprintf(w, "Display a specific snippet with ID %d", id)
 }
 
 func snippetCreate(w http.ResponseWriter, r *http.Request) {
@@ -33,16 +33,4 @@ func snippetCreate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Write([]byte("Create a new snippet"))
-}
-
-func main() {
-	mux := http.NewServeMux() // "new router"
-	mux.HandleFunc("/", home) // subtree path, eg /**
-	mux.HandleFunc("/snippet/view", snippetView) // fixed path, direct matching
-	mux.HandleFunc("/snippet/create", snippetCreate)
-
-	log.Print("starting server on :4000")
-
-	err := http.ListenAndServe(":4000", mux)
-	log.Fatal(err)
 }
